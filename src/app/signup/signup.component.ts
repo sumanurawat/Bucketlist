@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
+import { Observable } from 'rxjs';
+import * as firebase from 'firebase/app';
+import { Router, RouterModule, Routes } from '@angular/router'
 
 @Component({
   selector: 'app-signup',
@@ -7,7 +12,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignupComponent implements OnInit {
 
-  constructor() { }
+  state: string = '';
+  error: any;
+
+  constructor(public af: AngularFireAuth,private router: Router) {
+  }
+
+  onSubmit(formData) {
+    if(formData.valid) {
+      console.log(formData.value);
+      this.af.auth.createUserWithEmailAndPassword(formData.value.email, formData.value.password)
+        .then(
+        (success) => {
+        console.log(success);
+        this.router.navigate(['/members'])
+      }).catch(
+        (err) => {
+        console.log(err);
+        this.error = err;
+      })
+    }
+  }
 
   ngOnInit() {
   }

@@ -13,16 +13,23 @@ import { Router, RouterModule, Routes } from '@angular/router'
 })
 export class LoginComponent implements OnInit {
   user: Observable<firebase.User>;
-
+  authState: any = null;
   error: any;
   constructor(public afAuth: AngularFireAuth, public af: AngularFireDatabase, private router: Router){
     this.user = afAuth.authState;
-    this.user.subscribe( auth => {
+    //this.user.subscribe( auth => {
+    //  if(auth)
+      //{
+        //this.router.navigateByUrl('/members');
+      //}
+    //});
+    this.afAuth.authState.subscribe((auth) => {
       if(auth)
       {
+        this.authState = auth;
         this.router.navigateByUrl('/members');
       }
-    })
+    });
   }
 
   loginFacebook() {

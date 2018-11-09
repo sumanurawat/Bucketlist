@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
+import { Observable } from 'rxjs';
+import * as firebase from 'firebase/app';
+import { Router, RouterModule, Routes } from '@angular/router'
 
 @Component({
   selector: 'app-email',
@@ -7,7 +12,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmailComponent implements OnInit {
 
-  constructor() { }
+   authState: any = null;
+   state: string = '';
+   error: any;
+
+
+   constructor(public afAuth: AngularFireAuth, public af: AngularFireDatabase, private router: Router){
+     this.afAuth.authState.subscribe((auth) => {
+       if(auth)
+       {
+         this.authState = auth;
+         this.router.navigateByUrl('/members');
+       }
+     });
+   }
+
+
+ onSubmit(formData) {
+   if(formData.valid) {
+     console.log(formData.value);
+     this.afAuth.auth.signInWithEmailAndPassword(formData.value.email, formData.value.password)
+     .then(
+       (success) => {
+       console.log(success);
+       this.router.navigate(['/members']);
+     }).catch(
+       (err) => {
+       console.log(err);
+       this.error = err;
+     })
+   }
+ }
 
   ngOnInit() {
   }
