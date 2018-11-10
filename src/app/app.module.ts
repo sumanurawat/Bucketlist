@@ -1,3 +1,6 @@
+//We declare all the modules, configurations, imports, components and services we would be using in our project
+//Export this module
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -15,16 +18,8 @@ import { LoginComponent } from './login/login.component';
 import { EmailComponent } from './email/email.component';
 import { SignupComponent } from './signup/signup.component';
 import { MembersComponent } from './members/members.component';
-
-
-export const firebaseConfig = {
-    apiKey: "AIzaSyCOzh6eVbH-Q_a2BSZfy4hbTQ6JUiZLc1o",
-    authDomain: "bucketlist-f7437.firebaseapp.com",
-    databaseURL: "https://bucketlist-f7437.firebaseio.com",
-    projectId: "bucketlist-f7437",
-    storageBucket: "bucketlist-f7437.appspot.com",
-    messagingSenderId: "348248410009"
-  };
+import { environment } from '../environments/environment';
+import { firebaseConfig } from '../environments/firebase.config';
 
 @NgModule({
   declarations: [
@@ -40,7 +35,7 @@ export const firebaseConfig = {
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireModule.initializeApp(firebaseConfig),//Imported from environment/firebase.config.ts
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireAuthModule,

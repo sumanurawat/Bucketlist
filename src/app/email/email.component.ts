@@ -19,7 +19,7 @@ export class EmailComponent implements OnInit {
 
    constructor(public afAuth: AngularFireAuth, public af: AngularFireDatabase, private router: Router){
      this.afAuth.authState.subscribe((auth) => {
-       if(auth)
+       if(auth)//If the user is signed in, navigate to members page
        {
          this.authState = auth;
          this.router.navigateByUrl('/members');
@@ -30,7 +30,7 @@ export class EmailComponent implements OnInit {
 
  onSubmit(formData) {
    if(formData.valid) {
-     console.log(formData.value);
+     //If the form data is valid, take the user to the members page
      this.afAuth.auth.signInWithEmailAndPassword(formData.value.email, formData.value.password)
      .then(
        (success) => {

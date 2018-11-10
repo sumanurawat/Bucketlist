@@ -1,3 +1,4 @@
+//Importing the required components of the modules
 import { Component } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { AngularFireAuth } from '@angular/fire/auth';
@@ -18,8 +19,8 @@ export class AppComponent {
   constructor(public afAuth: AngularFireAuth, public af: AngularFireDatabase) {
     this.items = af.list('/messages', ref =>
       ref.limitToFirst(50)
-    );
-    this.tasks = this.items.valueChanges();
+    );//Retrieving the data in AngularFireList
+    this.tasks = this.items.valueChanges();//Converting it to an observable to see any value change and this is pushed to html
     this.user = this.afAuth.authState;
   }
   login() {
@@ -29,7 +30,7 @@ export class AppComponent {
     this.afAuth.auth.signOut();
   }
   Send(desc: string) : void {
-      this.items.push({ message: desc, done: true});
+      this.items.push({ message: desc, done: true});//Pushing the object to firebase database af
       this.msgVal = '';
   }
 }

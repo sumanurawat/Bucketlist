@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
   }
 
   loginFacebook() {
+    //Facebook login using firebase api
     this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider()).then(
         (success) => {
         this.router.navigate(['/members']);
@@ -43,6 +44,7 @@ export class LoginComponent implements OnInit {
   }
 
   loginGoogle() {
+    //Google signin using firebase api
     this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(
         (success) => {
         this.router.navigate(['/members']);

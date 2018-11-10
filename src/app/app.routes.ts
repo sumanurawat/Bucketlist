@@ -1,3 +1,7 @@
+//Routes file to manage angular routing
+//In this file we declare all the routes with the respective components
+//We can also attach services to routes like in this case I have attached AuthGuard
+
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 

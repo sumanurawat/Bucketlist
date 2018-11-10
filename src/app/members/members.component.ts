@@ -21,7 +21,7 @@ export class MembersComponent implements OnInit {
       if(auth)
       {
         this.authState = auth;
-        this.name = this.authState['displayName'];
+        this.name = this.authState['displayName'];//If the user is signed in, show the display name
       }
     });
   }

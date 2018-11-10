@@ -22,7 +22,7 @@ export class SignupComponent implements OnInit {
 
   onSubmit(formData) {
     if(formData.valid) {
-      console.log(formData.value.email);
+      //If the form is valid, call firebase method to create user with email
       this.af.auth.createUserWithEmailAndPassword(formData.value.email, formData.value.password)
         .then(
         (success) => {
@@ -37,6 +37,7 @@ export class SignupComponent implements OnInit {
   }
 
   ngOnInit() {
+    //Form validation code
     this.form = this.formBuilder.group({
       email: [null, [Validators.required, Validators.email]],
       password: [null, Validators.required],
