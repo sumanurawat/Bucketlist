@@ -4,6 +4,7 @@ import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { Observable } from 'rxjs';
 import * as firebase from 'firebase/app';
 import { Router, RouterModule, Routes } from '@angular/router'
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-signup',
@@ -14,13 +15,14 @@ export class SignupComponent implements OnInit {
 
   state: string = '';
   error: any;
+  form: FormGroup;
 
-  constructor(public af: AngularFireAuth,private router: Router) {
+  constructor(public af: AngularFireAuth, private router: Router, private formBuilder: FormBuilder) {
   }
 
   onSubmit(formData) {
     if(formData.valid) {
-      console.log(formData.value);
+      console.log(formData.value.email);
       this.af.auth.createUserWithEmailAndPassword(formData.value.email, formData.value.password)
         .then(
         (success) => {
@@ -35,6 +37,10 @@ export class SignupComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.form = this.formBuilder.group({
+      email: [null, [Validators.required, Validators.email]],
+      password: [null, Validators.required],
+    });
   }
 
 }

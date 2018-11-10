@@ -5,12 +5,34 @@
 
   <span class="error" *ngIf="error">{{ error }}</span>
 
-  <form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
+  <!--<form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
 
     <input type="text" placeholder="Email address.." (ngModel)="email" name="email" class="txt" required>
     <input type="password" placeholder="Password" (ngModel)="password" name="password" class="txt" required>
 
 
     <button type="submit" [disabled]="!formData.valid" class="basic-btn">Create my account</button>
-  </form>
+  </form>-->
+  <form class="form-horizontal" #formData='ngForm' [formGroup]="form" (ngSubmit)="onSubmit(formData)">
+
+  <div class="form-group">
+    <div class="col-sm-12">
+      <label for="email" class="control-label">Email</label>
+      <input type="text" id="email" (ngModel)="email" class="form-control" class="txt" formControlName="email">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-12">
+      <label for="password" class="control-label">Password</label>
+      <input type="password" id="password" (ngModel)="password" class="form-control" class="txt" formControlName="password">
+    </div>
+  </div>
+
+  <button type="submit" class="basic-btn" [disabled]="!form.valid">
+    Submit
+  </button>
+
+ </form>
+
 </div>

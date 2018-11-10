@@ -26,6 +26,13 @@ button {
     color:white;
 }
 
+.basic-btn:disabled,
+.basic-btn[disabled]{
+  background-color: #cccccc;
+  color: white;
+  cursor: default;
+}
+
 input.txt {
     background:#fff !important;
     padding:1.3em 1em;
