@@ -13,21 +13,15 @@ import { Router, RouterModule, Routes } from '@angular/router'
 })
 export class LoginComponent implements OnInit {
   user: Observable<firebase.User>;
+  users: AngularFireList<any>;
   authState: any = null;
   error: any;
-  constructor(public afAuth: AngularFireAuth, public af: AngularFireDatabase, private router: Router){
+  constructor(public afAuth: AngularFireAuth, public af: AngularFireDatabase, private router: Router) {
     this.user = afAuth.authState;
-    //this.user.subscribe( auth => {
-    //  if(auth)
-      //{
-        //this.router.navigateByUrl('/members');
-      //}
-    //});
     this.afAuth.authState.subscribe((auth) => {
-      if(auth)
-      {
+      if (auth) {
         this.authState = auth;
-        this.router.navigateByUrl('/members');
+        this.router.navigateByUrl('/members');//If user is logged in then proceed to profile page
       }
     });
   }
@@ -35,23 +29,48 @@ export class LoginComponent implements OnInit {
   loginFacebook() {
     //Facebook login using firebase api
     this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider()).then(
-        (success) => {
+      (success) => {
+        if ((success.additionalUserInfo.isNewUser)) {
+          var user = firebase.auth().currentUser;
+          this.users = this.af.list(`users/${user.uid}`);
+          this.users.push({ name: user.displayName });//If the user is logging in for the first time then save the information
+        }
         this.router.navigate(['/members']);
       }).catch(
         (err) => {
-        this.error = err;
-      });
+          this.error = err;
+        });
   }
 
   loginGoogle() {
     //Google signin using firebase api
     this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(
-        (success) => {
+      (success) => {
+        if ((success.additionalUserInfo.isNewUser)) {
+          var user = firebase.auth().currentUser;
+          this.users = this.af.list(`users/${user.uid}`);
+          this.users.push({ name: user.displayName });
+        }
         this.router.navigate(['/members']);
       }).catch(
         (err) => {
-        this.error = err;
-      });
+          this.error = err;
+        });
+  }
+
+  onSubmit(formData) {
+    if (formData.valid) {
+      //If the form data is valid, take the user to the members page
+      this.afAuth.auth.signInWithEmailAndPassword(formData.value.email, formData.value.password)
+        .then(
+          (success) => {
+            this.router.navigate(['/members']);//In case of sign in using email, the information is already saved while signing up
+          }).catch(
+            (err) => {
+              console.log(err);
+              this.error = err;
+            })
+    }
   }
 
 

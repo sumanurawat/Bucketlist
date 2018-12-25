@@ -1,0 +1,18 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand active" [routerLink]="['/']">Bucketlist<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+    <!--<span class="sr-only">(current)</span>-->
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarResponsive">
+    <ul class="navbar-nav ml-auto" routerLinkActive="active">
+      <li class="nav-item">
+        <a [routerLink]="['/login']" class="nav-link">Login</a>
+      </li>
+      <li class="nav-item">
+        <a [routerLink]="['/signup']" class="nav-link">Sign-up</a>
+      </li>
+    </ul>
+  </div>
+</nav>

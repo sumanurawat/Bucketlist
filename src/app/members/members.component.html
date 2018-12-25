@@ -1,11 +1,19 @@
-<div class="form-container" id="toolbar">
-    <header>
-      <button (click)="logout()" class="basic-btn">Logout</button>
-    </header>
-    <div id="page">
-      <h2>Hey {{ name }}!</h2>
+<app-navbar></app-navbar>
+<br>
+<!--<img src="assets/images/filler.png" />-->
+<div class="container">
 
-      <!--<img src="assets/images/filler.png" />-->
-    </div>
-    
+  <form class="form-inline">
+    <i class="fa fa-search" aria-hidden="true"></i>
+    <input id="message" *ngIf="(user | async)?.uid" class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search" aria-label="Search" [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}">
+  </form>
+
+  <!--<input type="text" id="message" *ngIf="(user | async)?.uid" placeholder="Search text" (keyup.enter)="Send($event.target.value)" [(ngModel)]="msgVal" />-->
+  <br><br>
+  <ul class="list-group">
+    <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let task of (tasks | async)?.slice().reverse() | filter : searchText"><a [routerLink]="['/member/'+task.key]">{{task.message}}</a>
+      <a class="trigger info-color text-white" (click)="Add(task.message, task.likes, task.key)">Add {{task.likes}}</a>
+    </li>
+  </ul>
 </div>
+<br>

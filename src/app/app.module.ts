@@ -15,19 +15,32 @@ import { AuthGuard } from './auth.service';
 import { routes } from './app.routes';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { EmailComponent } from './email/email.component';
 import { SignupComponent } from './signup/signup.component';
 import { MembersComponent } from './members/members.component';
 import { environment } from '../environments/environment';
 import { firebaseConfig } from '../environments/firebase.config';
+import { NavbarComponent } from './navbar/navbar.component';
+import { HomeComponent } from './home/home.component';
+import { HomenavComponent } from './homenav/homenav.component';
+import { ForgetpassComponent } from './forgetpass/forgetpass.component';
+import { FilterPipe } from './filter.pipe';
+import { PersonalComponent } from './personal/personal.component';
+import { FlashMessagesModule } from 'angular2-flash-messages';
+import { MemberComponent } from './member/member.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    EmailComponent,
     SignupComponent,
-    MembersComponent
+    MembersComponent,
+    NavbarComponent,
+    HomeComponent,
+    HomenavComponent,
+    ForgetpassComponent,
+    PersonalComponent,
+    FilterPipe,
+    MemberComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +50,7 @@ import { firebaseConfig } from '../environments/firebase.config';
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig),//Imported from environment/firebase.config.ts
     AngularFirestoreModule,
+    FlashMessagesModule,
     AngularFireStorageModule,
     AngularFireAuthModule,
     AngularFireDatabaseModule,

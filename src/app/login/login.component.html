@@ -1,11 +1,55 @@
-<div class="form-container">
-  <img src="assets/images/lock.svg" id="lock">
+<!-- Default form login -->
+<app-homenav></app-homenav>
+<br><br>
+<div class="card w-50 mx-auto">
+  <div class="card-body">
+<form class="text-center border border-light p-5" #formData='ngForm' (ngSubmit)="onSubmit(formData)">
 
+    <p class="h4 mb-4">Sign in</p>
     <span class="error" *ngIf="error">{{ error }}</span>
+    <!-- Email -->
+    <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail"
+    (ngModel)="email" name="email"  required>
 
-  <button (click)="loginFacebook()" id="fb">Login With Facebook</button><br>
-  <button (click)="loginGoogle()" id="google">Login With Google</button>
-  <button routerLink="/login-email" id="email">Email</button>
+    <!-- Password -->
+    <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password"
+    (ngModel)="password" name="password"  required>
 
-  <a routerLink="/signup" routerLinkActive="active" class="alc">No account? <strong>Create one here</strong></a>
+    <div class="d-flex justify-content-around">
+        <div>
+            <!-- Remember me -->
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember">
+                <label class="custom-control-label" for="defaultLoginFormRemember">Remember me</label>
+            </div>
+        </div>
+        <div>
+            <!-- Forgot password -->
+            <a [routerLink]="['/forget']">Forgot password?</a>
+        </div>
+    </div>
+
+    <!-- Sign in button -->
+    <button class="btn btn-dark btn-block my-4" [disabled]="!formData.valid" type="submit">Sign in</button>
+
+    <!-- Register -->
+    <p>Not a member?
+        <a [routerLink]="['/signup']">Register</a>
+    </p>
+
+    <!-- Social login -->
+    <p>or sign in with:</p>
+
+    <a type="button" (click)="loginFacebook()" class="dark-blue-text mx-2">
+        <i class="fa fa-facebook"></i>
+    </a>
+    <a type="button" (click)="loginGoogle()" class="red-text mx-2">
+        <i class="fa fa-google"></i>
+    </a>
+
+
+</form>
 </div>
+</div>
+
+<!-- Default form login -->

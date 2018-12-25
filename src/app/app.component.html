@@ -1,11 +1,3 @@
-<!--<div class="row columns">
-  <button (click)="login()" *ngIf="!(user | async)?.uid" >Anonymous Login</button>
-  <button (click)="logout()">Logout</button>
-
-  <input type="text" id="message" *ngIf="(user | async)?.uid" placeholder="What is it that you do?" (keyup.enter)="Send($event.target.value)" [(ngModel)]="msgVal" />
-  <div id="details-container">
-     <p *ngFor="let task of (tasks | async)"><img src="../assets/images/cart.svg">{{task.message}}</p>
-  </div>
-</div>-->
 <router-outlet></router-outlet>
+
 <!--Just router link to follow app.routes.ts directions-->
