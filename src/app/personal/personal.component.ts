@@ -51,9 +51,13 @@ export class PersonalComponent implements OnInit {
 
   Send(desc: string): void {
     this.error = '';
+    this.msgVal = '';
+    if (desc == '') {
+      this.error = "Please enter an item";
+      return;
+    }
     this.checkItems = this.af.list('/messages', ref => ref.orderByChild('message').equalTo(desc));
     this.checkIndItems = this.af.list(`items/${this.userId}`, ref => ref.orderByChild('message').equalTo(desc));
-    this.msgVal = '';
     let objectSubscription = this.checkIndItems.snapshotChanges().subscribe(snapshot => {
       if (snapshot.length > 0) { //If item alreay exists in user's list then do nothing
         this.error = "Item already exists in your list";
