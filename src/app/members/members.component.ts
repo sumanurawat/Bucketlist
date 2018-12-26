@@ -22,6 +22,7 @@ export class MembersComponent implements OnInit {
   userId: string;
   error: any;
   likeUpdateLikes: any;
+  searchText: any;
 
   /**** debug ****/
   user: Observable<firebase.User>;

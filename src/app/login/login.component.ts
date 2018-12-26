@@ -11,7 +11,10 @@ import { Router, RouterModule, Routes } from '@angular/router'
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent implements OnInit {
+  email: any;
+  password: any;
   user: Observable<firebase.User>;
   users: AngularFireList<any>;
   authState: any = null;

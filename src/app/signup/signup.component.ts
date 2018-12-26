@@ -17,6 +17,9 @@ export class SignupComponent implements OnInit {
   users: AngularFireList<any>;
   error: any;
   form: FormGroup;
+  name: any;
+  email: any;
+  password: any;
 
   constructor(public afAuth: AngularFireAuth, public afd: AngularFireDatabase, public af: AngularFireAuth, private router: Router, private formBuilder: FormBuilder) {
 

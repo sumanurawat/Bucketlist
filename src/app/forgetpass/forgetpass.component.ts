@@ -16,6 +16,7 @@ export class ForgetpassComponent implements OnInit {
   state: string = '';
   message: any;
   form: FormGroup;
+  email: any;
 
   constructor(public afAuth: AngularFireAuth, public af: AngularFireAuth, private router: Router, private formBuilder: FormBuilder) {
   }
