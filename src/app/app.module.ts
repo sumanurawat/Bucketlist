@@ -13,6 +13,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthGuard } from './auth.service';
 import { routes } from './app.routes';
+import { GoogleChart } from './angular2-google-chart.directive';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
@@ -27,6 +28,7 @@ import { FilterPipe } from './filter.pipe';
 import { PersonalComponent } from './personal/personal.component';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { MemberComponent } from './member/member.component';
+import { MapComponent } from './map/map.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,8 @@ import { MemberComponent } from './member/member.component';
     PersonalComponent,
     FilterPipe,
     MemberComponent,
+    MapComponent,
+    GoogleChart
   ],
   imports: [
     BrowserModule,

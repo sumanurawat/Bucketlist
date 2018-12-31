@@ -1,62 +1,64 @@
 <!-- Default form login -->
 <app-homenav></app-homenav>
 <br><br>
-<div class="card w-50 mx-auto">
+<div class="container">
+  <div class="card mx-auto">
 
-  <h5 class="card-header black-color black-text text-center py-4">
-    <strong>Sign in</strong>
-  </h5>
+    <h5 class="card-header black-color black-text text-center py-4">
+      <strong>Sign in</strong>
+    </h5>
 
-  <div class="card-body px-lg-5 pt-0">
-    <span class="error" *ngIf="error">{{ error }}</span>
-    <form class="text-center" #formData='ngForm' (ngSubmit)="onSubmit(formData)">
-      <br>
+    <div class="card-body px-lg-5 pt-0">
+      <span class="error" *ngIf="error">{{ error }}</span>
+      <form class="text-center" #formData='ngForm' (ngSubmit)="onSubmit(formData)">
+        <br>
 
 
-      <!-- Email -->
-      <div class="md-form">
-        <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail" (ngModel)="email" name="email" required>
-      </div>
+        <!-- Email -->
+        <div class="md-form">
+          <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail" (ngModel)="email" name="email" required>
+        </div>
 
-      <!-- Password -->
-      <div class="md-form">
-        <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password" (ngModel)="password" name="password" required>
-      </div>
+        <!-- Password -->
+        <div class="md-form">
+          <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password" (ngModel)="password" name="password" required>
+        </div>
 
-      <div class="d-flex justify-content-around">
-        <div>
-          <!-- Remember me -->
-          <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember">
-            <label class="custom-control-label" for="defaultLoginFormRemember">Remember me</label>
+        <div class="d-flex justify-content-around">
+          <div>
+            <!-- Remember me -->
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember">
+              <label class="custom-control-label" for="defaultLoginFormRemember">Remember me</label>
+            </div>
+          </div>
+          <div>
+            <!-- Forgot password -->
+            <a [routerLink]="['/forget']">Forgot password?</a>
           </div>
         </div>
-        <div>
-          <!-- Forgot password -->
-          <a [routerLink]="['/forget']">Forgot password?</a>
-        </div>
-      </div>
 
-      <!-- Sign in button -->
-      <button class="btn btn-outline-dark btn-rounded btn-block my-4 waves-effect z-depth-0" [disabled]="!formData.valid" type="submit">Sign in</button>
+        <!-- Sign in button -->
+        <button class="btn btn-outline-dark btn-rounded btn-block my-4 waves-effect z-depth-0" [disabled]="!formData.valid" type="submit">Sign in</button>
 
-      <!-- Register -->
-      <p>Not a member?
-        <a [routerLink]="['/signup']">Register</a>
-      </p>
+        <!-- Register -->
+        <p>Not a member?
+          <a [routerLink]="['/signup']">Register</a>
+        </p>
 
-      <!-- Social login -->
-      <p>or sign in with:</p>
+        <!-- Social login -->
+        <p>or sign in with:</p>
 
-      <a type="button" (click)="loginFacebook()" class="dark-blue-text mx-2">
-        <i class="fa fa-facebook"></i>
-      </a>
-      <a type="button" (click)="loginGoogle()" class="red-text mx-2">
-        <i class="fa fa-google"></i>
-      </a>
+        <a type="button" (click)="loginFacebook()" class="dark-blue-text mx-2">
+          <i class="fa fa-facebook"></i>
+        </a>
+        <a type="button" (click)="loginGoogle()" class="red-text mx-2">
+          <i class="fa fa-google"></i>
+        </a>
 
 
-    </form>
+      </form>
+    </div>
   </div>
 </div>
 

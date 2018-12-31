@@ -1,0 +1,55 @@
+<div id="outer">
+  <app-homenav></app-homenav>
+  <!--<div id="background">
+    <!--<ul id="sticky_notes">
+      <li>
+        <a>
+          <h2>Travel</h2>
+        </a>
+      </li>
+      <li>
+        <a>
+          <h2>Read a book</h2>
+        </a>
+      </li>
+      <li>
+        <a>
+          <h2>La Tomatina 2019?</h2>
+        </a>
+      </li>
+      <li>
+        <a>
+          <h2>Personalize it</h2>
+        </a>
+      </li>
+      <br>
+    </ul>
+  </div>-->
+
+  <div id="background">
+    <br>
+    <div class="container">
+      <form class="form-inline">
+        <i class="fa fa-search" aria-hidden="true"></i>
+        <input id="message" class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search" aria-label="Search" [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}">
+      </form>
+
+      <!--<input type="text" id="message" *ngIf="(user | async)?.uid" placeholder="Search text" (keyup.enter)="Send($event.target.value)" [(ngModel)]="msgVal" />-->
+      <br><br>
+      <ul class="list-group">
+        <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" *ngFor="let task of (tasks | async)?.slice().reverse() | filter : searchText">{{task.message}}
+          <span class="badge badge-primary badge-pill">{{task.likes}}</span>
+        </li>
+      </ul>
+    </div>
+    <br>
+  </div>
+
+  <!-- Footer -->
+  <footer class="py-2 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Bucketlist 2018</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+</div>

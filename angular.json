@@ -27,7 +27,8 @@
               "src/styles.css"
             ],
             "scripts": [
-            
+              "src/vendor/jquery-easing/jquery.easing.min.js",
+              "src/js/grayscale.js"
             ]
           },
           "configurations": {

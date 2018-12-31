@@ -13,6 +13,7 @@ import { MembersComponent } from './members/members.component';
 import { SignupComponent } from './signup/signup.component';
 import { PersonalComponent } from './personal/personal.component';
 import { MemberComponent } from './member/member.component';
+import { MapComponent } from './map/map.component';
 import { AuthGuard } from './auth.service'
 
 export const router: Routes = [
@@ -24,6 +25,7 @@ export const router: Routes = [
   { path: 'members', component: MembersComponent, canActivate: [AuthGuard] },
   { path: 'member/:id', component: MemberComponent, canActivate: [AuthGuard] },
   { path: 'personal', component: PersonalComponent, canActivate: [AuthGuard] },
+  { path: 'map', component: MapComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: '/'}
 ]
 
