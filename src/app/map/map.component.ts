@@ -51,6 +51,7 @@ export class MapComponent implements OnInit {
         "path": "/libs/amcharts/",
         "theme": "light",
         "projection": "eckert3",
+        "dragMap": false,
         "dataProvider": {
           "map": "worldLow",
           "getAreasFromMap": true,
