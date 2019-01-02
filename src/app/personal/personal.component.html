@@ -2,7 +2,7 @@
 <br>
 <!--<img src="assets/images/filler.png" />-->
 <div class="container">
-  <input id="message" *ngIf="(user | async)?.uid" class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Add an item" aria-label="Search" (keyup.enter)="Send($event.target.value)" [(ngModel)]="msgVal" [ngModelOptions]="{standalone: true}">
+  <input id="message" *ngIf="(user | async)?.uid" class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Add an item to your wishlist" aria-label="Search" (keyup.enter)="Send($event.target.value)" [(ngModel)]="msgVal" [ngModelOptions]="{standalone: true}">
   <!--<input type="text" id="message" *ngIf="(user | async)?.uid" placeholder="Search text" (keyup.enter)="Send($event.target.value)" [(ngModel)]="msgVal" />-->
   <br>
   <span class="error" *ngIf="error">{{ error }}</span>

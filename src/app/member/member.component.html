@@ -1,31 +1,29 @@
 <app-navbar></app-navbar>
 <br><br>
-<div class="card w-50 mx-auto">
-  <h5 class="card-header black-color black-text text-center py-4">
-    <strong>Details</strong>
-  </h5>
-  <div class="card-body px-lg-5 pt-0">
-    <span class="error" *ngIf="error">{{ error }}</span>
-    <form class="text-center" #formData='ngForm'>
-
-
+<div class="container">
+  <div class="card mx-auto">
+    <h5 class="card-header black-color black-text text-center py-4">
+      <strong>Details</strong>
+    </h5>
+    <div class="card-body px-lg-5 pt-0">
       <span class="error" *ngIf="error">{{ error }}</span>
-      <br>
-      <div class="form-group row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">Item:</label>
-        <div class="col-sm-10">
-          <input type="text" readonly class="form-control-plaintext" id="staticEmail" value={{item}}>
+      <form class="text-center" #formData='ngForm'>
+        <div class="form-group row">
+          <label for="staticEmail" class="col-sm-2 col-form-label">Item:</label>
+          <div class="col-sm-10">
+            <input type="text" readonly class="form-control-plaintext" id="staticEmail" value={{item}}>
+          </div>
         </div>
-      </div>
 
-      <div class="form-group row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">Likes:</label>
-        <div class="col-sm-10">
-          <input type="text" readonly class="form-control-plaintext" id="staticEmail" value={{likes}}>
+        <div class="form-group row">
+          <label for="staticEmail" class="col-sm-2 col-form-label">Likes:</label>
+          <div class="col-sm-10">
+            <input type="text" readonly class="form-control-plaintext" id="staticEmail" value={{likes}}>
+          </div>
         </div>
-      </div>
-      <!-- Add button -->
-      <button class="btn btn-dark btn-block my-4" (click)="Add()">Add</button>
-    </form>
+        <!-- Add button -->
+        <button class="btn btn-dark btn-block my-4" (click)="Add()">Add</button>
+      </form>
+    </div>
   </div>
 </div>

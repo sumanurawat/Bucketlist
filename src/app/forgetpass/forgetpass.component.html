@@ -1,34 +1,35 @@
-
 <app-homenav></app-homenav>
 <!-- Material form subscription -->
 <br><br>
-<div class="card w-50 mx-auto">
+<div class="container">
+  <div class="card mx-auto">
 
     <h5 class="card-header dark-color black-text text-center py-4">
-        <strong>Forget password?</strong>
+      <strong>Forget password?</strong>
     </h5>
 
     <!--Card content-->
     <div class="card-body px-lg-5">
 
-        <!-- Form -->
-        <form class="text-center" style="color: #757575;" #formData='ngForm' [formGroup]="form" (ngSubmit)="onSubmit(formData)">
+      <!-- Form -->
+      <form class="text-center" style="color: #757575;" #formData='ngForm' [formGroup]="form" (ngSubmit)="onSubmit(formData)">
 
-            <p>Type your email and a password reset email will be sent to the given email address.</p>
-            <span class="error" *ngIf="message">{{ message }}</span>
-            <!-- E-mai -->
-            <div class="md-form">
-                <input type="email" id="materialSubscriptionFormEmail" class="form-control" (ngModel)="email" name="email" formControlName="email" required>
-                <label for="materialSubscriptionFormEmail">E-mail</label>
-            </div>
+        <p>Type your email and a password reset email will be sent to the given email address.</p>
+        <span class="error" *ngIf="message">{{ message }}</span>
+        <!-- E-mai -->
+        <div class="md-form">
+          <input type="email" id="materialSubscriptionFormEmail" class="form-control" (ngModel)="email" name="email" formControlName="email" required>
+          <label for="materialSubscriptionFormEmail">E-mail</label>
+        </div>
 
-            <!-- Sign in button -->
-            <button class="btn btn-outline-dark btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit" [disabled]="!formData.valid">Submit</button>
+        <!-- Sign in button -->
+        <button class="btn btn-outline-dark btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit" [disabled]="!formData.valid">Submit</button>
 
-        </form>
-        <!-- Form -->
+      </form>
+      <!-- Form -->
 
     </div>
 
+  </div>
+  <!-- Material form subscription -->
 </div>
-<!-- Material form subscription -->

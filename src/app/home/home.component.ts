@@ -3,9 +3,12 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { Observable } from 'rxjs';
 import * as firebase from 'firebase/app';
-import { Router, RouterModule, Routes } from '@angular/router';
+import { Router, RouterModule, Routes, NavigationEnd } from '@angular/router';
 import { Pipe, PipeTransform } from '@angular/core';
 import { FilterPipe } from '../filter.pipe';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/map';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-home',
@@ -32,6 +35,13 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    $("a.js-scroll-trigger[href^='#']").click(function(e) {
+      e.preventDefault();
+      var position = $($(this).attr("href")).offset().top;
+      $("body, html").animate({
+        scrollTop: position
+      } /* speed */);
+    });
   }
 
 }

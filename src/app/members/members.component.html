@@ -5,7 +5,7 @@
 
   <form class="form-inline">
     <i class="fa fa-search" aria-hidden="true"></i>
-    <input id="message" *ngIf="(user | async)?.uid" class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search" aria-label="Search" [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}">
+    <input id="message" *ngIf="(user | async)?.uid" class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search for an item from the trending wishlist" aria-label="Search" [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}">
   </form>
 
   <!--<input type="text" id="message" *ngIf="(user | async)?.uid" placeholder="Search text" (keyup.enter)="Send($event.target.value)" [(ngModel)]="msgVal" />-->

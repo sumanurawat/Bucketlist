@@ -29,6 +29,7 @@ import { PersonalComponent } from './personal/personal.component';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { MemberComponent } from './member/member.component';
 import { MapComponent } from './map/map.component';
+import { AmChartsModule } from "@amcharts/amcharts3-angular";
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { MapComponent } from './map/map.component';
     AngularFireStorageModule,
     AngularFireAuthModule,
     AngularFireDatabaseModule,
+    AmChartsModule,
     routes
   ],
   providers: [AuthGuard],

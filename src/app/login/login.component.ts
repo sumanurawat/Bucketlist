@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
         if ((success.additionalUserInfo.isNewUser)) {
           var user = firebase.auth().currentUser;
           this.users = this.af.list(`users/${user.uid}`);
-          this.users.push({ name: user.displayName });//If the user is logging in for the first time then save the information
+          this.af.object(`users/${user.uid}`).update({ name: user.displayName });//If the user is logging in for the first time then save the information
         }
         this.router.navigate(['/members']);
       }).catch(
@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
         if ((success.additionalUserInfo.isNewUser)) {
           var user = firebase.auth().currentUser;
           this.users = this.af.list(`users/${user.uid}`);
-          this.users.push({ name: user.displayName });
+          this.af.object(`users/${user.uid}`).update({ name: user.displayName });//If the user is logging in for the first time then save the information
         }
         this.router.navigate(['/members']);
       }).catch(

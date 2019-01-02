@@ -34,7 +34,7 @@ export class SignupComponent implements OnInit {
             if ((success.additionalUserInfo.isNewUser)) {
               var user = firebase.auth().currentUser;//If the user is logging in for the first time then save the information
               this.users = this.afd.list(`users/${user.uid}`);
-              this.users.push({ name: formData.value.name });
+              this.afd.object(`users/${user.uid}`).update({ name: formData.value.name });
             }
             this.router.navigate(['/members'])
           }).catch(
@@ -52,7 +52,7 @@ export class SignupComponent implements OnInit {
         if ((success.additionalUserInfo.isNewUser)) {
           var user = firebase.auth().currentUser;
           this.users = this.afd.list(`users/${user.uid}`);
-          this.users.push({ name: user.displayName });
+          this.afd.object(`users/${user.uid}`).update({ name: user.displayName });
         }
         this.router.navigate(['/members']);
       }).catch(
@@ -68,7 +68,7 @@ export class SignupComponent implements OnInit {
         if ((success.additionalUserInfo.isNewUser)) {
           var user = firebase.auth().currentUser;
           this.users = this.afd.list(`users/${user.uid}`);
-          this.users.push({ id: user.uid });
+          this.afd.object(`users/${user.uid}`).update({ name: user.displayName });
         }
         this.router.navigate(['/members']);
       }).catch(

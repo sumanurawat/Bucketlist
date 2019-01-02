@@ -1,6 +1,6 @@
 (function($) {
-  "use strict"; // Start of use strict
-  $(document).ready(function() {
+  "use strict";
+  // Start of use strict
     // Add smooth scrolling to all links
     $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function() {
       if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
@@ -14,13 +14,16 @@
         }
       }
     });
-  });
 
   // Closes responsive menu when a scroll trigger link is clicked
   $('.js-scroll-trigger').click(function() {
-    console.log("yo");
     $('.navbar-collapse').collapse('hide');
   });
+
+  $(document).on('click', '.nav-link a', function (e) {
+    console.log('this is the click');
+    e.preventDefault();
+});
 
   // Activate scrollspy to add active class to navbar items on scroll
   $('body').scrollspy({
