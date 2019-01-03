@@ -26,6 +26,11 @@ export class MapComponent implements OnInit {
 
   Add() {
     this.selected = new Array();
+    if(this.tempChart == undefined)
+    {
+      this.router.navigateByUrl('/personal');
+      return;
+    }
     for (var i = 0; i < this.tempChart.dataProvider.areas.length; i++) {
       if (this.tempChart.dataProvider.areas[i].showAsSelected)
         this.selected.push(this.tempChart.dataProvider.areas[i].id);
